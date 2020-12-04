@@ -22,115 +22,115 @@ class BinarySearchTree
         this.root = null;
     }
 
- 	// Insert
- 	// Creates a new node with a user ID and color.
- 	// If the tree is empty it add this node to a tree and make it a
- 	// root, otherwise it calls insert(node, user_id, color).
+  // Insert
+  // Creates a new node with a user ID and color.
+  // If the tree is empty it add this node to a tree and make it a
+  // root, otherwise it calls insert(node, user_id, color).
     insert(user_id, color, url)
-	{
-    	// Creating a node and initailising
-    	// with id
-    	var newNode = new Student(user_id, color, url);
-    	// root is null then node will
-    	// be added to the tree and made root.
-    	if(this.root === null) {
-    		console.log("Root is now "+ newNode.id)
-        	this.root = newNode;
-        	}
-    	else {
+  {
+      // Creating a node and initailising
+      // with id
+      var newNode = new Student(user_id, color, url);
+      // root is null then node will
+      // be added to the tree and made root.
+      if(this.root === null) {
+        console.log("Root is now "+ newNode.id)
+          this.root = newNode;
+          }
+      else {
         // find the correct position in the
         // tree and add the node
-        	console.log("Recursing to insert new node")
-        	this.insertNode(this.root, newNode);
+          console.log("Recursing to insert new node")
+          this.insertNode(this.root, newNode);
         }
-	}
+  }
 
-	// Method to insert a node in a tree
-	// it moves over the tree to find the location
-	// to insert a node with a given id
-	insertNode(node, newNode)
-	{
+  // Method to insert a node in a tree
+  // it moves over the tree to find the location
+  // to insert a node with a given id
+  insertNode(node, newNode)
+  {
     // if the id is less than the node
     // id move left of the tree
-    	if(newNode.id < node.id)
-    	{
-        	// if left is null insert node here
-        	if(node.left === null)
-            	node.left = newNode;
-        	else
-            	// if left is not null recur until
-            	// null is found
-            	this.insertNode(node.left, newNode);
-    	}
-    	// if the id is more than the node
-    	// id move right of the tree
-    	else
-    	{
-        	// if right is null insert node here
-        	if(node.right === null)
-            	node.right = newNode;
-        	else
+      if(newNode.id < node.id)
+      {
+          // if left is null insert node here
+          if(node.left === null)
+              node.left = newNode;
+          else
+              // if left is not null recur until
+              // null is found
+              this.insertNode(node.left, newNode);
+      }
+      // if the id is more than the node
+      // id move right of the tree
+      else
+      {
+          // if right is null insert node here
+          if(node.right === null)
+              node.right = newNode;
+          else
 
             // if right is not null recur until
             // null is found
-            	this.insertNode(node.right,newNode);
-    		}
-		}
+              this.insertNode(node.right,newNode);
+        }
+    }
 
 // search for a node with given id
-	search(node, id)
-	{
-		console.log("Searching...");
-   	// if trees is empty return null
-    	if(node === null) {
-    		console.log("ID not present")
-        	return null;
-  			}
-	// if id is less than node's id
-	// move left
-    	else if(id < node.id) {
-    		console.log("Going left, "+ id +" less than " + node.id);
-        	return this.search(node.left, id);
-  			}
+  search(node, id)
+  {
+    console.log("Searching...");
+    // if trees is empty return null
+      if(node === null) {
+        console.log("ID not present")
+          return null;
+        }
+  // if id is less than node's id
+  // move left
+      else if(id < node.id) {
+        console.log("Going left, "+ id +" less than " + node.id);
+          return this.search(node.left, id);
+        }
     // if id is less than node's id
     // move left
-    	else if(id > node.id) {
-    		console.log("Going right, "+ id +" greater than " + node.id);
-        	return this.search(node.right, id);
+      else if(id > node.id) {
+        console.log("Going right, "+ id +" greater than " + node.id);
+          return this.search(node.right, id);
         }
 
     // if id is equal to the node id
     // return node
-    	else
-        	return node;
-	}
+      else
+          return node;
+  }
 
 
 // Returns Root node of tree
-	getRootNode(){
-		return this.root;
-	}
+  getRootNode(){
+    return this.root;
+  }
 
 
- 	findMinNode(node)
-	{
+  findMinNode(node)
+  {
     // if left of a node is null
     // then it must be minimum node
-    	if(node.left === null)
-        	return node;
-    	else
-        	return this.findMinNode(node.left);
-	}
+      if(node.left === null)
+          return node;
+      else
+          return this.findMinNode(node.left);
+  }
 
-	findMaxNode(node)
-	{
+  findMaxNode(node)
+  {
     // if right of a node is null
     // then it must be max node
-    	if(node.right === null)
-        	return node;
-    	else
-        	return this.findMaxNode(node.right);
-	}
+      if(node.right === null)
+          return node;
+      else
+          return this.findMaxNode(node.right);
+  }
 
 
 
@@ -139,9 +139,9 @@ class BinarySearchTree
 // This function will go out to our hosted CSV file and retreive
 // the student data.
 function getData(){
-	let tree = new BinarySearchTree // create BST
-	jQuery.ajax({
-    url: "https://raw.githubusercontent.com/SYS-Education/canvasColorChanger/main/data.csv?token=AQKHELKXLWCFXWAYPEGXPW27ZJQ2Y", // Supply URL to CSV file here
+  let tree = new BinarySearchTree // create BST
+  jQuery.ajax({
+    url: "https://raw.githubusercontent.com/mattduranSYS/testingJS/main/data.csv", // Supply URL to CSV file here
     type: 'get', // Getting data
     dataType: 'text', // Data will be text
     async: false,
@@ -156,13 +156,13 @@ function getData(){
     },
     error: function(jqXHR, textStatus, errorThrow){
         console.log(textStatus); // On failure, run this
-    	}
-	});
+      }
+  });
     cacheTree(tree);
     return tree
 }
 
-function urlWatcher(){
+function urlWatcher(tree, root){
     // Current page being viewed
     let currentPage = window.location.pathname;
         if(currentPage.includes("gradebook")){ // Gradebook is current page
@@ -179,11 +179,8 @@ function urlWatcher(){
         else if(currentPage.includes("/users/")){ // Users profile page
             var exists = tree.search(root, currentPage.split('/').pop());
             if(exists){
-                elem = document.getElementsByClassName("profile_table")[0]["rows"]
-                for(var i = 0; i < 3; i++)
-                  elem[i].style.color = exists.color;
-                }
-            }
+                changeProfile(exists)
+              }
         else if(currentPage.includes("2684")){
 
         } // Attendance book LTI
@@ -195,13 +192,27 @@ function urlWatcher(){
         } // Courses people page
   }
 
+function changeProfile(exists){
+    var elem = document.getElementsByClassName("profile_table")[0]["rows"]
+    var header = document.getElementsByTagName("h2")[0]["innerText"]
+    for(var i = 0; i < 3; i++)
+        elem[i]["cells"][1]["outerText"].style.color = exists.color;
+    header.style.color = exists.color;
+    }
+
+
+
 function validatePermission(){
     var role = ENV.current_user_types[0].toLowerCase()
+    let tree = getTree();
+    var root = tree.getRootNode();
     if(role.includes("admin")){
         // do the thing for admins
+        urlWatcher(tree, root)
         }
     else if(role.includes("teacher")){
         // do the thing for teachers
+        urlWatcher(tree, root)
         }
     else return
 }
