@@ -190,17 +190,29 @@ function urlWatcher(tree, root){
         else if(currentPage.includes("courses")){
 
         } // Courses people page
+    }
   }
 
 function changeProfile(exists){
     var elem = document.getElementsByClassName("profile_table")[0]["rows"]
     var header = document.getElementsByTagName("h2")[0]["innerText"]
-    for(var i = 0; i < 3; i++)
+    for(var i = 0; i < 3; i++){
         elem[i]["cells"][1]["outerText"].style.color = exists.color;
+        addMouseOver(elem[i]["cells"][1], exists.color);
+      }
     header.style.color = exists.color;
+    addMouseOver(header, exists.color);
     }
-
-
+    
+function addMouseOver(element, color){
+    if(color === "red"){
+      element.title = "IEP"  
+    } else if (color === "blue"){
+      element.title = "ELL"
+    } else if (color === "orange"){
+      element.title = "504"
+    }
+}
 
 function validatePermission(){
     var role = ENV.current_user_types[0].toLowerCase()
